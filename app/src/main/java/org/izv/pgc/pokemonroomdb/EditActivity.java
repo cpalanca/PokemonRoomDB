@@ -42,12 +42,12 @@ public class EditActivity extends AppCompatActivity {
 
     private void initBlundeReciver() {
         Bundle pokemonFecht = getIntent().getExtras();
-        pokemon = null;
-        if(pokemonFecht!=null){
+        pokemon = new Pokemon();
+        if (pokemonFecht != null) {
             pokemon = (Pokemon) pokemonFecht.getSerializable("pokemon");
 
             nombre = pokemon.getName();
-            numoficial= pokemon.getNumoficial();
+            numoficial = pokemon.getNumoficial();
             type = pokemon.getType();
             weight = pokemon.getWeight();
             height = pokemon.getHeight();
@@ -61,15 +61,15 @@ public class EditActivity extends AppCompatActivity {
 
         //SET THE DATA
         etNombre.setText(nombre);
-        etNoficial.setText(""+numoficial);
-        etType.setText(""+type);
-        etHeight.setText(""+height);
-        etWeight.setText(""+weight);
-        etAbility.setText(""+ability);
+        etNoficial.setText("" + numoficial);
+        etType.setText("" + type);
+        etHeight.setText("" + height);
+        etWeight.setText("" + weight);
+        etAbility.setText("" + ability);
 
-        if (imagen == null){
+        if (imagen == null) {
             imageView.setImageResource(R.drawable.pokeball);
-        }else{
+        } else {
             Uri imageUri = Uri.parse(imagen);
             Glide.with(this).load(imageUri).into(imageView);
         }
@@ -89,7 +89,7 @@ public class EditActivity extends AppCompatActivity {
                 pokemon.setHeight(Float.parseFloat(etHeight.getText().toString()));
                 pokemon.setAbility(etAbility.getText().toString());
                 pokemon.setUrl(imagen);
-                Log.v("POKEDEX", ""+pokemon.toString());
+                Log.v("POKEDEX", "" + pokemon.toString());
                 viewModel.edit(pokemon);
                 volverMain();
             }
@@ -105,7 +105,7 @@ public class EditActivity extends AppCompatActivity {
                 pickIntent.setType("image/*");
 
                 Intent chooserIntent = Intent.createChooser(getIntent, "Select Image");
-                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[] {pickIntent});
+                chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, new Intent[]{pickIntent});
 
                 startActivityForResult(chooserIntent, PHOTO_SELECTED);
             }
@@ -114,7 +114,7 @@ public class EditActivity extends AppCompatActivity {
     }
 
     private void volverMain() {
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 

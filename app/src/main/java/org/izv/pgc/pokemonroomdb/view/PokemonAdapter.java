@@ -54,7 +54,7 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
             final Pokemon current = pokemonsList.get(position);
             String urlImage = current.getUrl();
 
-            if(urlImage != null) {
+            if (urlImage != null) {
                 urlImage = current.getUrl();
                 Log.v("xyzyx", "urlImage: " + urlImage);
             } else {
@@ -98,13 +98,13 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.PokemonV
     public int getItemCount() {
         Log.v("xyzyx", "getItemCount: " + contador);
         int elementos = 0;
-        if(pokemonsList != null) {
+        if (pokemonsList != null) {
             elementos = pokemonsList.size();
         }
         return elementos;
     }
 
-    public void setPokemons(List<Pokemon> pokemonsList){
+    public void setPokemons(List<Pokemon> pokemonsList) {
         this.pokemonsList = pokemonsList;
         notifyDataSetChanged();
     }
