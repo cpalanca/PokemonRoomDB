@@ -17,7 +17,7 @@ public interface PokemonDao {
 // CRUD - CREATE-READ-UPDATE-DELETE
 
     @Delete
-    int delete(org.izv.pgc.pokemonroomdb.entity.Pokemon pokemon);
+    int delete(Pokemon pokemon);
 
     @Update
     int edit(Pokemon pokemon);
